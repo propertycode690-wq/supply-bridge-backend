@@ -179,8 +179,8 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
           id: user.id,
           name: user.name,
           email: user.email,
-          role: user.role.name,
-          permissions: user.role.permissions ? user.role.permissions.map(rp => rp.permission.name) : [],
+          role: user.role?.name || roleName,
+          permissions: user.role?.permissions ? user.role.permissions.map((rp: any) => rp.permission.name) : [],
         },
       },
     });
